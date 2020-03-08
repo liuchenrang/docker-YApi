@@ -29,3 +29,17 @@ services:
     expose:
       - 27017
     restart: unless-stopped
+  mongo-express:
+    links:
+      - yapi-mongo
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_OPTIONS_EDITORTHEME: 3024-night
+      ME_CONFIG_BASICAUTH_USERNAME: xinghuo
+      ME_CONFIG_BASICAUTH_PASSWORD: mm123456
+      #ME_CONFIG_MONGODB_ADMINUSERNAME: mongoadmin
+      #ME_CONFIG_MONGODB_ADMINPASSWORD: mongoadmin
+      ME_CONFIG_MONGODB_SERVER: yapi-mongo
